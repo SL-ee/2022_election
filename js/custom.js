@@ -62,13 +62,12 @@ $(function(){
 		$(window).scrollTop(said_start-50);
 	})
 	$(".info-details").click(function() {
-		$(window).scrollTop(details_start-95);
+		$(window).scrollTop(details_start-50);
 	})
 	$(".info-rumors").click(function() {
 		$(window).scrollTop(rumors_start-50);
 	})
 
-	
 	
 	let detail01_width = $(".detail-desc01").width()+40+45.2;
 	let detail01_height = $(".detail-desc01").height()+20;
@@ -85,17 +84,33 @@ $(function(){
 
 	$(".main-intro-lines").fadeIn("slow");
 
-	$(".related-articles-arrow").click(function() {
-		console.log("wgywhy");
-		$(".each-rumor").css("background", "#111");
-		$(".each-rumor-desc-wrap").fadeOut();
-		$(".each-rumor-desc-back-wrap").fadeIn();
+	$(".arrow01").click(function() {
+		$(".rumor01").css("background", "#393939");
+		$(".rumor-wrap01").fadeOut();
+		$(".rumor-back-wrap01").fadeIn();
 	})
 
-	$(".related-articles-back-arrow").click(function() {
-		$(".each-rumor").css("background", "#ededed");
-		$(".each-rumor-desc-wrap").fadeIn();
-		$(".each-rumor-desc-back-wrap").fadeOut();
+	$(".back-arrow01").click(function() {
+		$(".rumor01").css("background", "#ededed");
+		$(".rumor-wrap01").fadeIn();
+		$(".rumor-back-wrap01").fadeOut();
+	})
+
+	$(".arrow02").click(function() {
+		$(".rumor02").css("background", "#393939");
+		$(".rumor-wrap02").fadeOut();
+		$(".rumor-back-wrap02").fadeIn();
+	})
+
+	$(".back-arrow02").click(function() {
+		$(".rumor02").css("background", "#ededed");
+		$(".rumor-wrap02").fadeIn();
+		$(".rumor-back-wrap02").fadeOut();
+	})
+
+	
+	$(".up-top-arrow").click(function() {
+		$(window).scrollTop(0);
 	})
 
 	/******** 모바일 전용 조정 ********/

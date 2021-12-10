@@ -212,6 +212,7 @@ width: 27px; height: 30px;}
 .for-scroll {height: 1000px;}
 
 /* candidate body */
+.container-wrap {position:relative;}
 .header-wrap {width: 950px; max-width:1500px; min-width: 900px; margin: 0 auto 0 auto;}
 .go-back-index {font-size: 22px;}
 .a-candidate-circle {width:40px; height:40px; border-radius: 50px; overflow: hidden;}
@@ -230,10 +231,10 @@ width: 27px; height: 30px;}
 .a-candidate-main {height:400px; position: relative; overflow: hidden;}
 .a-candidate-main > div {position: absolute;}
 .main-background {left: 150px;}
-.main-summary {right: 10px; top: 30px;}
+.main-summary {right: 20px; top: 20px;}
 .main-summary img { position: relative; width: 400px; top:0;left:0; animation: enter_right 1s cubic-bezier(0.37,0.01,0.55,0.99);}
-.a-candidate-main .main-intro-lines {position: relative; top: 200px; left:380px; display: none;}
-.main-intro-lines p{color: white; position:absolute; opacity: 80%;}
+.a-candidate-main .main-intro-lines {position: relative; top: 180px; left:380px; display: none;}
+.main-intro-lines p{color: white; position:absolute; opacity: 80%; font-weight: 100;}
 .intro-line01 {font-size: 36px;}
 .intro-line02 {font-size: 42px; top:40px; left:30px;}
 .intro-line03 {font-size: 34px; top:90px; left:-40px;}
@@ -256,7 +257,7 @@ width: 27px; height: 30px;}
 
 .background-odd{background-color: #393939;}
 .background-even{background-color: #ededed;}
-.background01 {background: #96bbb4;}
+.background01 {background: #b2d5bd;}
 .a-candidate-info { padding-bottom: 100px;}
 .each-info {width: 950px; max-width:1500px; min-width: 900px; margin: 0 auto 0 auto; height: auto; padding-bottom: 150px;}
 .info-10scenes-wrap {position: relative;}
@@ -287,7 +288,7 @@ width: 27px; height: 30px;}
 .left-message {background-color: #dcdcdc;}
 .each-message-wrap {margin-bottom: 30px;}
 .total-message-wrap {width:700px; height: 100%; margin: 0 auto;}
-/* .each-message-box {border: 1px solid #393939; margin: 0 30px;} */
+.each-message-box {margin-bottom: 100px;}
 
 .info-details-wrap {text-align: center;}
 .total-details-wrap {width:500px; height:100%; margin: 0 auto; position:relative;}
@@ -299,7 +300,7 @@ width: 27px; height: 30px;}
 .detail-desc {background-color: white; padding: 10px 15px 10px 30px; position: absolute; z-index: 2; left: 40px;}
 
 .total-rumors-wrap {width: 75%; margin: 0 auto; }
-.each-rumor {position: relative; height: 350px; border-radius: 20px; box-shadow: 1px 1px 1px #393939; overflow: hidden;}
+.each-rumor {position: relative; height: 350px; border-radius: 20px; box-shadow: 1px 1px 1px #393939; overflow: hidden; margin-bottom: 100px;}
 .each-rumor > div {float:left;}
 .each-rumor::after { display: block; clear: both; content:""; }
 .each-rumor-photo {width:30%; overflow: hidden; }
@@ -318,6 +319,9 @@ width: 27px; height: 30px;}
 .related-back-articles {color:white; font-size: 24px; padding-bottom: 10px; border-bottom: 1px solid white;}
 .article-photo img {width:130px; }
 
+.up-top-arrow {position:fixed; bottom: 100px; right: 10%; width: 50px; text-align: center;}
+.up-top-arrow p {font-size: 12px;}
+.up-top-arrow img {width:100%; margin-top:5px; cursor: pointer;}
 
 @keyframes enter_right {
 	0%{ top:0;left:70px; opacity: 0.1; }
