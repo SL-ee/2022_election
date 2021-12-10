@@ -113,6 +113,37 @@ $(function(){
 		$(window).scrollTop(0);
 	})
 
+	// 색 지정
+	let lee_color = '#3599ff';
+	let yun_color = '#d92b37';
+	let ahn_color = '#e56b2e';
+	let sim_color = '#fccd32';
+	let whos_color = '#111';
+	let img_name = '';
+	let person_name = $('.main-person-name');
+
+	if (person_name.html() === '이재명') {
+		whos_color = lee_color;
+		img_name = 'img/lee-background.png';
+	} else if (person_name.html() === '윤석열') {
+		whos_color = yun_color;
+		img_name = 'img/yun-background.png';
+	} else if (person_name.html() === '안철수') {
+		whos_color = ahn_color;
+		img_name = 'img/ahn-background.png';
+	} else if (person_name.html() === '심상정') {
+		whos_color = sim_color;
+		img_name = 'img/sim-background.png';
+	} else {
+		console.log("can't find this person.");
+	}
+	$(".main-party-name").css("color", whos_color);
+	$(".navi-progress-bar").css("background-color", whos_color);
+	$(".scene-title").css("color", whos_color);
+	$(".right-message").css("border", "2px solid " + whos_color);
+	$(".main-background-img").attr("src", img_name);
+	
+
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
 		

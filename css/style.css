@@ -237,17 +237,17 @@ width: 27px; height: 30px;}
 .main-intro-lines p{color: white; position:absolute; opacity: 80%; font-weight: 100;}
 .intro-line01 {font-size: 36px;}
 .intro-line02 {font-size: 42px; top:40px; left:30px;}
-.intro-line03 {font-size: 34px; top:90px; left:-40px;}
+.intro-line03 {font-size: 32px; top:90px; left:-40px;}
 .a-candidate-main-name-wrap {top: 50px; left: 70px; animation: enter_left 1s cubic-bezier(0.37,0.01,0.55,0.99);}
 .a-candidate-main-name-wrap p {line-height: 1.2;}
-.main-party-name {font-size: 30px;font-weight: 600;color: #3599ff;}
+.main-party-name {font-size: 30px;font-weight: 600;}
 .main-person-name {font-size: 44px;font-weight: 700;}
 .info-navi-wrap { position: relative; height: 50px; z-index: 100;}
 .info-navi-wrap > div { float: left; cursor: pointer; text-align: center;}
 .info-navi-wrap::after { display: block; clear: both; content:""; }
 .each-info-navi {margin: 10px 0 10px 0; z-index: 4; position: relative;}
 .each-info-navi > p { color:white; font-size: 20px; font-weight: 400;}
-.navi-progress-bar {width:0; background-color: #3599ff; position: absolute; height: 100%; z-index: 3; opacity: 90%;}
+.navi-progress-bar {width:0;position: absolute; height: 100%; z-index: 3; opacity: 90%;}
 .navi-progress-bar-back {width:100%; height:100%; background-color: #393939; opacity: 100%; z-index: 2; position: absolute;}
 
 .info-title{text-align: center; padding:50px 0;}
@@ -271,7 +271,7 @@ width: 27px; height: 30px;}
 .each-scene-img-detail p {position: relative; z-index: 4;}
 .each-scene-year {margin: 0 10px 5px 10px;}
 .each-scene-year p {font-size: 24px; color:white; }
-.scene-title {font-size: 30px; color:#3599ff; }
+.scene-title {font-size: 30px; }
 .scene-right {margin-left:50%;}
 .scene-left {margin-right:50%; text-align: right;}
 .scene-left .each-scene-img {margin-left:auto;}
@@ -280,7 +280,7 @@ width: 27px; height: 30px;}
 .said-date {width:100%; margin: 30px 0; text-align: center;}
 .said-date p {color: #393939;}
 .said-message {width: 500px; height: auto; border-radius: 20px; padding: 20px;}
-.right-message {background-color: white; border: 2px solid #3599ff;}
+.right-message {background-color: white;}
 .right-message-wrap {margin-left: 12%; position:relative;}
 .right-message-wrap > div { float: left;}
 .right-message-wrap::after { display: block; clear: both; content:""; }
