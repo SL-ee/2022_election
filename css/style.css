@@ -188,11 +188,11 @@ width: 27px; height: 30px;}
 .desc-header-wrap h1 {font-size: 50px;}
 
 .game-link-bar {margin: 10px 0 10px 0;}
-.game-image-wrap {height: 150px; background-color: #3b57c4; position:relative;}
+.game-image-wrap {height: 500px; background-color: #3b57c4; position:relative;}
 .game-link-btn-wrap {background-color: #555555; border-radius: 20px; position: absolute; padding: 20px; bottom: 20px; right: 20px;}
 .game-link-btn-wrap a {color: white;}
 
-.candidates-container {margin-top: 50px;}
+.candidates-container {margin: 50px 0;}
 .candidates-header {text-align: center; border-bottom: 1px solid;padding: 10px;}
 .candidates-header h2 {font-size: 30px;}
 .candidates-list {padding: 10px 0 10px 0;}
@@ -227,16 +227,21 @@ width: 27px; height: 30px;}
 .circle-person-name {font-size: 20px; font-weight: 500; }
 .candidates-select-header {padding:0;}
 
-.a-candidate-main {height:500px; position: relative; overflow: hidden;}
+.a-candidate-main {height:400px; position: relative; overflow: hidden;}
 .a-candidate-main > div {position: absolute;}
 .main-background {left: 150px;}
 .main-summary {right: 10px; top: 30px;}
-.main-summary img {width: 400px;}
-.a-candidate-main-name-wrap {top: 50px; left: 50px;}
+.main-summary img { position: relative; width: 400px; top:0;left:0; animation: enter_right 1s cubic-bezier(0.37,0.01,0.55,0.99);}
+.a-candidate-main .main-intro-lines {position: relative; top: 200px; left:380px; display: none;}
+.main-intro-lines p{color: white; position:absolute; opacity: 80%;}
+.intro-line01 {font-size: 36px;}
+.intro-line02 {font-size: 42px; top:40px; left:30px;}
+.intro-line03 {font-size: 34px; top:90px; left:-40px;}
+.a-candidate-main-name-wrap {top: 50px; left: 70px; animation: enter_left 1s cubic-bezier(0.37,0.01,0.55,0.99);}
 .a-candidate-main-name-wrap p {line-height: 1.2;}
 .main-party-name {font-size: 30px;font-weight: 600;color: #3599ff;}
 .main-person-name {font-size: 44px;font-weight: 700;}
-.info-navi-wrap { position: relative; z-index: 100;}
+.info-navi-wrap { position: relative; height: 50px; z-index: 100;}
 .info-navi-wrap > div { float: left; cursor: pointer; text-align: center;}
 .info-navi-wrap::after { display: block; clear: both; content:""; }
 .each-info-navi {margin: 10px 0 10px 0; z-index: 4; position: relative;}
@@ -251,6 +256,7 @@ width: 27px; height: 30px;}
 
 .background-odd{background-color: #393939;}
 .background-even{background-color: #ededed;}
+.background01 {background: #96bbb4;}
 .a-candidate-info { padding-bottom: 100px;}
 .each-info {width: 950px; max-width:1500px; min-width: 900px; margin: 0 auto 0 auto; height: auto; padding-bottom: 150px;}
 .info-10scenes-wrap {position: relative;}
@@ -267,6 +273,7 @@ width: 27px; height: 30px;}
 .scene-right {margin-left:50%;}
 .scene-left {margin-right:50%; text-align: right;}
 .scene-left .each-scene-img {margin-left:auto;}
+.hideme {opacity: 0;}
 
 .said-date {width:100%; margin: 30px 0; text-align: center;}
 .said-date p {color: #393939;}
@@ -292,23 +299,41 @@ width: 27px; height: 30px;}
 .detail-desc {background-color: white; padding: 10px 15px 10px 30px; position: absolute; z-index: 2; left: 40px;}
 
 .total-rumors-wrap {width: 75%; margin: 0 auto; }
-/* .each-rumor-title {padding: 10px 0; border-bottom: 1px solid #393939;}
-.each-rumor-title h1 {color: #393939;}
-.each-rumor-photo {margin: 10px 0;}
-.each-rumor-photo img {width: 100%;}
-.each-rumor-desc p {text-align: left; color:#393939;}
-.each-rumor-articels {margin-top:20px;}
-.each-rumor-articels p {text-align: left; color:#393939;}
-.each-rumor-articels p a {color:#393939; text-decoration: underline;}
-.related-articles {font-size: 20px; opacity: 80%;} */
 .each-rumor {position: relative; height: 350px; border-radius: 20px; box-shadow: 1px 1px 1px #393939; overflow: hidden;}
 .each-rumor > div {float:left;}
 .each-rumor::after { display: block; clear: both; content:""; }
-.each-rumor-photo {width:30%; overflow: hidden;}
-.each-rumor-desc-wrap {width:60%; padding:30px; position: relative;}
+.each-rumor-photo {width:30%; overflow: hidden; }
+.each-rumor-photo img {left: -300px; position: relative;}
+.each-rumor-desc-wrap {width:60%; padding:30px; left: 30%; position: absolute;}
 .each-rumor-title { padding-bottom:10px; margin-bottom: 10px; border-bottom: 1px solid #393939;}
-.each-rumor-body {margin-bottom: 20px;}
-.each-rumor-articels {position:absolute; bottom: -100px;}
+.each-rumor-body {margin-bottom: 20px; height: 160px;}
+.each-rumor-articles {text-align: center;}
+.related-articles-arrow {position: relative; animation: arrow 1s cubic-bezier(0.37,0.01,0.55,0.99) infinite;}
+.related-articles-arrow img {width:30px; cursor: pointer;}
+.each-rumor-desc-back-wrap{ display: none; width: 60%; text-align: center; padding: 10px 30px;}
+.related-articles-wrap > div {float:left; margin: 0 2.2px;}
+.related-articles-wrap::after {display: block; clear: both; content:""; }
+.related-articles-wrap {padding-top: 20px;}
+.related-articles-back-arrow img {width: 30px; cursor: pointer;}
+.related-back-articles {color:white; font-size: 24px; padding-bottom: 10px; border-bottom: 1px solid white;}
+.article-photo img {width:130px; }
+
+
+@keyframes enter_right {
+	0%{ top:0;left:70px; opacity: 0.1; }
+	100%{ top:0;left:0; opacity: 1; }
+}
+
+@keyframes enter_left {
+	0%{ top:50px;left:0; }
+	100%{ top:50px;left:70px;}
+}
+
+@keyframes arrow {
+	0%{ top:0;}
+	50%{ top:10px;}
+  100%{ top:0;}
+}
 
 /******common footer******/
 .common-footer {position: relative; background:#fff;}

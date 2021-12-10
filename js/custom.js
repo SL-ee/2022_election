@@ -17,6 +17,7 @@ $(function(){
 	let info_navi_height= $(".info-navi-wrap").height();
 	$(".each-info-navi").width((info_navi_width)/4-0.1);
 	
+	// 화면 크기 바뀔 때마다 후보 선택 재계산
 	$(window).resize(function() {
 		screenWidth = $(window).width();
 		screenHeight = $(window).height();
@@ -35,12 +36,15 @@ $(function(){
 	let rumors_start;
 	let each_info_margin = 150;
 
+	// 내비게이션 offset 스크롤시 재계산
 	let cal_start = function(){
+		_10scenes_start = $(".info-10scenes-wrap").offset().top;
 		said_start = $(".info-said-wrap").offset().top;
 		rumors_start = $(".info-rumors-wrap").offset().top;
 		details_start = $(".info-details-wrap").offset().top;
 	}
 
+	// 내비게이션 offset 할당
 	if ($(".a-candidate-info").offset() != undefined) {
 		candidate_start = $(".a-candidate-info").offset().top;
 		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + (each_info_margin*4);
@@ -55,16 +59,16 @@ $(function(){
 		$(window).scrollTop(_10scenes_start-50);
 	})
 	$(".info-said").click(function() {
-		$(window).scrollTop(said_start-100);
+		$(window).scrollTop(said_start-50);
 	})
 	$(".info-details").click(function() {
-		$(window).scrollTop(details_start-100);
+		$(window).scrollTop(details_start-95);
 	})
 	$(".info-rumors").click(function() {
-		$(window).scrollTop(rumors_start-100);
+		$(window).scrollTop(rumors_start-50);
 	})
 
-	$(".info-10scenes-line").height($(".info-10scenes-wrap").height()-200);
+	
 	
 	let detail01_width = $(".detail-desc01").width()+40+45.2;
 	let detail01_height = $(".detail-desc01").height()+20;
@@ -79,6 +83,21 @@ $(function(){
 	$(".detail03").width(detail03_width);
 	$(".detail03").height(detail03_height);
 
+	$(".main-intro-lines").fadeIn("slow");
+
+	$(".related-articles-arrow").click(function() {
+		console.log("wgywhy");
+		$(".each-rumor").css("background", "#111");
+		$(".each-rumor-desc-wrap").fadeOut();
+		$(".each-rumor-desc-back-wrap").fadeIn();
+	})
+
+	$(".related-articles-back-arrow").click(function() {
+		$(".each-rumor").css("background", "#ededed");
+		$(".each-rumor-desc-wrap").fadeIn();
+		$(".each-rumor-desc-back-wrap").fadeOut();
+	})
+
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
 		
@@ -92,6 +111,7 @@ $(function(){
 
 	$(".loading-page").fadeOut(700, function(){
 		init();
+
 	});
 
 	var offsetCalculated = false;
@@ -121,8 +141,21 @@ $(function(){
 
 		if(!offsetCalculated){ 
 			cal_start();
+			$(".info-10scenes-line").height($(".info-10scenes-wrap").height()-200);
 			offsetCalculated = true;
-		 }
+		}
+
+		$(".hideme").each( function(){
+
+			var bottom_of_object = $(this).offset().top + $(this).outerHeight() * 0.5;
+			var bottom_of_window = nowScroll + $(window).height();
+	  
+			/* If the object is completely visible in the window, fade it it */
+			if( bottom_of_window > bottom_of_object ){
+				$(this).animate({'opacity':'1'},1000);
+			}
+	  
+		});
 	});
 
 	
