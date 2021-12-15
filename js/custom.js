@@ -56,16 +56,16 @@ $(function(){
 		console.log("not in here")
 	}
 	$(".info-10scenes").click(function() {
-		$(window).scrollTop(_10scenes_start-50);
+		$(window).scrollTop(_10scenes_start-100);
 	})
 	$(".info-said").click(function() {
-		$(window).scrollTop(said_start-50);
+		$(window).scrollTop(said_start-100);
 	})
 	$(".info-details").click(function() {
-		$(window).scrollTop(details_start-50);
+		$(window).scrollTop(details_start-100);
 	})
 	$(".info-rumors").click(function() {
-		$(window).scrollTop(rumors_start-50);
+		$(window).scrollTop(rumors_start-100);
 	})
 
 	
@@ -82,7 +82,75 @@ $(function(){
 	$(".detail03").width(detail03_width);
 	$(".detail03").height(detail03_height);
 
-	$(".main-intro-lines").fadeIn("slow");
+	$(".main-summary img").animate({"left":"0", "opacity":"1"}, 1500, "easeInSine", function(){
+		$(".a-candidate-main-name-wrap").fadeIn("slow");
+	});
+	$(".main-intro-lines").animate({"top": "50px", "left": "50px", "opacity":"1"}, 1500, "easeInSine");
+	$(".sns-homepage img").hover(function(){
+		$(".sns-homepage p").stop().fadeIn();
+	}, function(){
+		$(".sns-homepage p").stop().fadeOut();
+	})
+	$(".sns-youtube img").hover(function(){
+		$(".sns-youtube p").stop().fadeIn();
+	}, function(){
+		$(".sns-youtube p").stop().fadeOut();
+	})
+	$(".sns-facebook img").hover(function(){
+		$(".sns-facebook p").stop().fadeIn();
+	}, function(){
+		$(".sns-facebook p").stop().fadeOut();
+	})
+
+	$(".declare-more-btn").click(function() {
+		if($('.declare-original').is(":visible")){
+			$(".declare-original").slideUp('slow');
+			$(".declare-more-btn p").html("전문보기");
+
+		} else {
+			$(".declare-original").slideDown('slow');
+			$(".declare-more-btn p").html("닫기");
+		}
+
+	})
+
+	// 말말말 좌우 버튼
+	$(".message-going-to-right").click(function(){
+		$(".message-going-to-right").css("pointer-events", "none");
+		$(".message-going-to-left").css("pointer-events", "none");
+   
+		let nowLeft = $(".message-box-wrap").css("left").split("px");
+		if(parseInt(nowLeft[0]) < -802) {
+		} else {
+			let strLeft = parseInt(nowLeft[0]) - 800;
+			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
+			})
+		}
+		$(".message-going-to-right").css("pointer-events", "auto");
+		$(".message-going-to-left").css("pointer-events", "auto");
+	})
+	$(".message-going-to-left").click(function(){
+		$(".message-going-to-right").css("pointer-events", "none");
+		$(".message-going-to-left").css("pointer-events", "none");
+		let nowLeft = $(".message-box-wrap").css("left").split("px");
+		if(parseInt(nowLeft[0]) > -2) {
+		} else {
+			let strLeft = parseInt(nowLeft[0]) + 800;
+			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
+			});
+		}
+		$(".message-going-to-right").css("pointer-events", "auto");
+		$(".message-going-to-left").css("pointer-events", "auto");
+	})
+
+	// 카드 애니메이션
+	$(".option").click(function(){
+		$(".option").removeClass("active");
+		$(".option").addClass("non-active");
+		$(this).removeClass("non-active");
+		$(this).addClass("active");
+		$(".active.each-scene-img-detail").animate({"opacity":"1"}, 500, "easeInSine");
+	 });
 
 	$(".arrow01").click(function() {
 		$(".rumor01").css("background", "#393939");
@@ -137,7 +205,7 @@ $(function(){
 	} else {
 		console.log("can't find this person.");
 	}
-	$(".main-party-name").css("color", whos_color);
+	// $(".main-party-name").css("color", whos_color);
 	$(".navi-progress-bar").css("background-color", whos_color);
 	$(".scene-title").css("color", whos_color);
 	$(".right-message").css("border", "2px solid " + whos_color);

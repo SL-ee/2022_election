@@ -228,20 +228,42 @@ width: 27px; height: 30px;}
 .circle-person-name {font-size: 20px; font-weight: 500; }
 .candidates-select-header {padding:0;}
 
-.a-candidate-main {height:400px; position: relative; overflow: hidden;}
+.a-candidate-main {height:450px; position: relative; overflow: hidden;}
 .a-candidate-main > div {position: absolute;}
-.main-background {left: 150px;}
+.main-background {left: 170px;}
 .main-summary {right: 20px; top: 20px;}
-.main-summary img { position: relative; width: 400px; top:0;left:0; animation: enter_right 1s cubic-bezier(0.37,0.01,0.55,0.99);}
-.a-candidate-main .main-intro-lines {position: relative; top: 180px; left:380px; display: none;}
-.main-intro-lines p{color: white; position:absolute; opacity: 80%; font-weight: 100;}
-.intro-line01 {font-size: 36px;}
-.intro-line02 {font-size: 42px; top:40px; left:30px;}
-.intro-line03 {font-size: 32px; top:90px; left:-40px;}
-.a-candidate-main-name-wrap {top: 50px; left: 70px; animation: enter_left 1s cubic-bezier(0.37,0.01,0.55,0.99);}
-.a-candidate-main-name-wrap p {line-height: 1.2;}
-.main-party-name {font-size: 30px;font-weight: 600;}
-.main-person-name {font-size: 44px;font-weight: 700;}
+.main-summary img { position: relative; width: 400px; top:0; left:70px; opacity: 0.1; }
+.a-candidate-main .main-intro-lines {top: 50px; left: 10px; opacity: 0.1;}
+.main-intro-lines-line {border-bottom: 1px solid #3599ff; position: absolute; width: 300px; left: 10px;}
+.lines-line01 {height:28px;}
+.lines-line02 {height:113px;}
+.main-intro-lines p{color: #111; opacity: 1; font-weight: 100; font-family: 'Nanum Myeongjo', serif; line-height: 1.5;}
+.intro-line {font-size: 28px;}
+.candidate-sns {bottom: 50px; left: 50px;}
+.candidate-sns img { width: 35px; cursor: pointer;}
+.sns-in {float: left;}
+.each-sns { margin-bottom: 10px;}
+.each-sns::after { display: block; clear: both; content:""; }
+.each-sns p {padding: 2.5px 8px; color: #555555; font-size: 20px; display: none;}
+.a-candidate-main-name-wrap {top: 50px; left:380px; text-align: right; display: none;}
+.a-candidate-main-name-wrap p {line-height: 1.05;}
+.main-party-name {font-size: 80px;font-weight: 200; color: white;}
+.main-person-name {font-size: 90px;font-weight: 700; color: white;}
+
+.a-candidate-declare {height: auto; position: relative; margin: 0 auto; width: 950px;}
+.declare-line {border-bottom: 1px solid #555; position: absolute; width:400px; top:21.7px;}
+.line02 {right:0;}
+.declare-title {margin: 40px 0;}
+.declare-title h2{font-size: 30px;}
+.declare-wrap {text-align: center;}
+.declare-video {}
+.declare-more-btn {width:100%; border-radius: 4px; margin: 20px auto; padding:7px; background: #ddd; cursor: pointer;}
+.declare-text-wrap {width: 560px; margin: 40px auto;}
+.declare-summary-title {font-size: 20px; margin-bottom: 20px;}
+.declare-original {display: none;}
+.para {margin: 20px 0;}
+.para p {line-height: 1.5;}
+
 .info-navi-wrap { position: relative; height: 50px; z-index: 100;}
 .info-navi-wrap > div { float: left; cursor: pointer; text-align: center;}
 .info-navi-wrap::after { display: block; clear: both; content:""; }
@@ -258,25 +280,61 @@ width: 27px; height: 30px;}
 
 .background-odd{background-color: #393939;}
 .background-even{background-color: #ededed;}
-.background01 {background: #b2d5bd;}
+.background01 {background: white;}
 .a-candidate-info { padding-bottom: 100px;}
-.each-info {width: 950px; max-width:1500px; min-width: 900px; margin: 0 auto 0 auto; height: auto; padding-bottom: 150px;}
+.each-info {max-width:1500px; margin: 0 auto 0 auto; height: auto; padding-bottom: 150px; position: relative;}
 .info-10scenes-wrap {position: relative;}
-.info-10scenes-line {position: absolute; width: 100%; height:700px; border-left: 2.5px solid white; margin-left: 50%; opacity: 80%; top: 200px;}
-.each-scene {height: auto; position: relative; padding-top: 100px;}
-.each-scene-img {width:70%; height: 100%; position:relative;}
-.each-scene-img img {width: 100%; height: 100%;}
-.each-scene-img-detail {position:absolute; bottom: 0;padding: 7px;}
+.each-scene {height: auto; position: relative;margin: 0 30px;}
+.each-scene-img {height: 100%;}
+.each-scene-img img {width: 400px; height: auto;}
+.each-scene-img-detail {position:absolute; bottom: 0;padding: 7px; opacity: 0;}
 .img-detail-back {position:absolute; background-color: white; opacity: 80%; width: 100%; height: 100%; left: 0; top: 0; z-index: 3;}
 .each-scene-img-detail p {position: relative; z-index: 4;}
-.each-scene-year {margin: 0 10px 5px 10px;}
 .each-scene-year p {font-size: 24px; color:white; }
 .scene-title {font-size: 30px; }
-.scene-right {margin-left:50%;}
-.scene-left {margin-right:50%; text-align: right;}
 .scene-left .each-scene-img {margin-left:auto;}
 .hideme {opacity: 0;}
 
+.scenes-wrap {position: relative; margin: 0 auto; width: 960px;}
+.scenes-wrap > div {float:left;}
+.scenes-wrap::after { display: block; clear: both; content:""; }
+
+/* 시범 삼아 추가 */
+.option {
+  position: relative;
+  overflow:hidden;
+
+  
+  height:460px;
+  margin:7px;
+  border:0px solid #111;
+
+  background-size:auto 120%;
+  background-position:center;
+
+  cursor: pointer;
+
+  transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  border-radius:20px;
+}
+.non-active {width:50px;}
+.non-active .each-scene-img-detail{opacity: 0;}
+.non-active .each-scene-img img{opacity: 0.7;}
+.active {
+  transform:scale(1);
+     
+  width:380px;
+  height:460px;
+  margin:0px;
+  border-radius:10px;
+     
+  background-size:auto 100%;
+}
+.active .each-scene-img-detail{opacity: 1;}
+.active .each-scene-img img{opacity: 1;}
+/* 시범 삼아 추가 */
+
+.info-said-wrap {width: 800px;}
 .said-date {width:100%; margin: 30px 0; text-align: center;}
 .said-date p {color: #393939;}
 .said-message {width: 500px; height: auto; border-radius: 20px; padding: 20px;}
@@ -289,15 +347,23 @@ width: 27px; height: 30px;}
 .left-message {background-color: #dcdcdc;}
 .each-message-wrap {margin-bottom: 30px;}
 .total-message-wrap {width:700px; height: 100%; margin: 0 auto;}
-.each-message-box {margin-bottom: 100px;}
 
-.total-details-wrap {width:600px; height:100%; margin: 0 auto; padding: 20px 0; position:relative; border: 1px solid #111;}
-.each-detail {position: relative; max-width: 100%; padding: 10px 30px;}
+.message-box-wrap { width: 3000px; position: relative; left:0;}
+.each-message-box {float: left; margin-bottom: 100px; position: relative; padding: 0 50px; border-right: 1px dotted #111;}
+.message-box-wrap::after {display: block; clear: both; content:""; }
+.message-arrow {position:absolute; background: #898989; border-radius: 30px; z-index: 50; width:50px;height:50px; cursor: pointer;}
+.message-arrow img {width:80%; padding: 5px;}
+.message-going-to-right img { transform: rotate(90deg);}
+.message-going-to-left img {transform: rotate(270deg);}
+.message-going-to-left {top:50px; top: 400px; left: -25px;}
+.message-going-to-right {top:50px; top: 400px; right: -25px;}
+
+.total-details-wrap {width:600px; height:100%; margin: 0 auto; padding: 20px 0; position:relative; background: #d5d5d5; border-radius: 10px;}
+.each-detail {position: relative; width: 240px; padding: 10px 30px;}
 .each-detail > div {float:left;}
 .each-detail::after { display: block; clear: both; content:""; }
-/* .detail-name {background-color: #3599ff; border-radius: 20px; padding: 10px 15px; position: absolute;z-index: 3;}
-.detail-name p {color:white;}
-.detail-desc {background-color: white; padding: 10px 15px 10px 30px; position: absolute; z-index: 2; left: 40px;} */
+.details-tr > div {float:left;}
+.details-tr::after{ display: block; clear: both; content:""; }
 .detail-name {margin-right:20px;}
 
 .total-rumors-wrap {width: 75%; margin: 0 auto; }
@@ -324,15 +390,15 @@ width: 27px; height: 30px;}
 .up-top-arrow p {font-size: 12px;}
 .up-top-arrow img {width:100%; margin-top:5px; cursor: pointer;}
 
-@keyframes enter_right {
+/* @keyframes enter_right {
 	0%{ top:0;left:70px; opacity: 0.1; }
 	100%{ top:0;left:0; opacity: 1; }
-}
-
+} */
+/* 
 @keyframes enter_left {
 	0%{ top:50px;left:0; }
 	100%{ top:50px;left:70px;}
-}
+} */
 
 @keyframes arrow {
 	0%{ top:0;}
