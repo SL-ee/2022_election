@@ -33,25 +33,28 @@ $(function(){
 	let _10scenes_start;
 	let said_start;
 	let details_start;
-	let rumors_start;
+	let declare_start;
 	let each_info_margin = 150;
 
 	// 내비게이션 offset 스크롤시 재계산
 	let cal_start = function(){
 		_10scenes_start = $(".info-10scenes-wrap").offset().top;
 		said_start = $(".info-said-wrap").offset().top;
-		rumors_start = $(".info-rumors-wrap").offset().top;
+		// rumors_start = $(".info-rumors-wrap").offset().top;
+		declare_strat = $(".info-declare-wrap").offset().top;
 		details_start = $(".info-details-wrap").offset().top;
 	}
 
 	// 내비게이션 offset 할당
 	if ($(".a-candidate-info").offset() != undefined) {
 		candidate_start = $(".a-candidate-info").offset().top;
-		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + (each_info_margin*4);
+		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
 		_10scenes_start = $(".info-10scenes-wrap").offset().top;
 		said_start = $(".info-said-wrap").offset().top;
 		details_start = $(".info-details-wrap").offset().top;
-		rumors_start = $(".info-rumors-wrap").offset().top;
+		declare_start = $(".info-declare-wrap").offset().top;
+		// console.log(declare_start)
+		// rumors_start = $(".info-rumors-wrap").offset().top;
 	} else {
 		console.log("not in here")
 	}
@@ -64,8 +67,9 @@ $(function(){
 	$(".info-details").click(function() {
 		$(window).scrollTop(details_start-100);
 	})
-	$(".info-rumors").click(function() {
-		$(window).scrollTop(rumors_start-100);
+	$(".info-declare").click(function() {
+		console.log("hi");
+		$(window).scrollTop(declare_start-100);
 	})
 
 	
@@ -121,26 +125,30 @@ $(function(){
    
 		let nowLeft = $(".message-box-wrap").css("left").split("px");
 		if(parseInt(nowLeft[0]) < -802) {
+			$(".message-going-to-right").css("pointer-events", "auto");
+			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
 			let strLeft = parseInt(nowLeft[0]) - 800;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
+				$(".message-going-to-right").css("pointer-events", "auto");
+				$(".message-going-to-left").css("pointer-events", "auto");
 			})
 		}
-		$(".message-going-to-right").css("pointer-events", "auto");
-		$(".message-going-to-left").css("pointer-events", "auto");
 	})
 	$(".message-going-to-left").click(function(){
 		$(".message-going-to-right").css("pointer-events", "none");
 		$(".message-going-to-left").css("pointer-events", "none");
 		let nowLeft = $(".message-box-wrap").css("left").split("px");
 		if(parseInt(nowLeft[0]) > -2) {
+			$(".message-going-to-right").css("pointer-events", "auto");
+			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
 			let strLeft = parseInt(nowLeft[0]) + 800;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
+				$(".message-going-to-right").css("pointer-events", "auto");
+				$(".message-going-to-left").css("pointer-events", "auto");
 			});
 		}
-		$(".message-going-to-right").css("pointer-events", "auto");
-		$(".message-going-to-left").css("pointer-events", "auto");
 	})
 
 	// 카드 애니메이션
@@ -149,7 +157,13 @@ $(function(){
 		$(".option").addClass("non-active");
 		$(this).removeClass("non-active");
 		$(this).addClass("active");
-		$(".active.each-scene-img-detail").animate({"opacity":"1"}, 500, "easeInSine");
+
+		$(".active .each-scene-img-detail").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
+		$(".active .each-scene-year").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
+		$(".active .each-scene-year p").delay(100).animate({"font-size":"24px"}, 500, "swing");
+		$(".non-active .each-scene-img-detail").animate({"opacity":"0"}, 0, "easeInSine");
+		$(".non-active .each-scene-year").animate({"opacity":"0.8"}, 300, "easeInSine");
+		$(".non-active .each-scene-year p").animate({"font-size":"11px"}, 300, "easeInSine");
 	 });
 
 	$(".arrow01").click(function() {
@@ -210,6 +224,23 @@ $(function(){
 	$(".scene-title").css("color", whos_color);
 	$(".right-message").css("border", "2px solid " + whos_color);
 	$(".main-background-img").attr("src", img_name);
+
+	// 책 모양 구현
+	// console.log(500 - $(".scene01 .each-scene-img-detail").outerHeight());
+	// console.log(500 - $(".scene02 .each-scene-img-detail").outerHeight());
+	// console.log(500 - $(".scene09 .each-scene-img-detail").outerHeight());
+	// if (person_name.html() === '이재명') {
+	// 	$(".scene02").css("top", "50px");
+	// 	$(".scene02 .each-scene-wrap").css("height", "450px");
+
+	// 	$(".scene06").css("top", "-50px");
+	// 	$(".scene06 .each-scene-wrap").css("height", "550px");
+	// 	$(".scene08").css("top", "-50px");
+	// 	$(".scene08 .each-scene-wrap").css("height", "550px");
+
+	// 	$(".scene09").css("top", "-100px");
+	// 	$(".scene09 .each-scene-wrap").css("height", "600px");
+	// }
 	
 
 	/******** 모바일 전용 조정 ********/
