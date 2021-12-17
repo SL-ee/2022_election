@@ -246,7 +246,7 @@ width: 27px; height: 30px;}
 .sns-facebook{ margin-bottom: 0px;}
 .each-sns::after { display: block; clear: both; content:""; }
 .each-sns p {padding: 2.5px 8px; color: #555555; font-size: 20px; display: none;}
-.a-candidate-main-name-wrap {bottom:137.5px; left:380px; text-align: right; display: none;}
+.a-candidate-main-name-wrap {bottom:137.5px; right: 322px; text-align: right; display: none;}
 .a-candidate-main-name-wrap p {line-height: 1.05;}
 .main-party-name {font-size: 80px;font-weight: 200; color: white;}
 .main-person-name {font-size: 90px;font-weight: 700; color: white;}
@@ -542,7 +542,7 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .main-background {left:-20px; background: #3599ff;}
 .main-summary img {width:300px; top: 30px; left: 45px;}
 .intro-line {font-size: 20px;}
-.a-candidate-main-name-wrap {left: 20px; bottom: 180px;}
+.a-candidate-main-name-wrap {left: 20px; right: auto; bottom: 180px;}
 .candidate-sns {left: 30px; bottom:30px;}
 .main-party-name { font-size:60px;}
 .main-person-name{ font-size:70px;}
