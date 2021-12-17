@@ -10,45 +10,34 @@ $(function(){
 		return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
 	};
 
-	let cand_list_width = $(".candidates-list").width();
-	$(".a-candidate").width((cand_list_width-80)/4-0.1);
-	$(".a-candidate-circle-wrap").width((cand_list_width-100)/5-0.1);
-	let info_navi_width = $(".info-navi-wrap").width();
-	let info_navi_height= $(".info-navi-wrap").height();
-	$(".each-info-navi").width((info_navi_width)/4-0.1);
-	
-	// 화면 크기 바뀔 때마다 후보 선택 재계산
-	$(window).resize(function() {
-		screenWidth = $(window).width();
-		screenHeight = $(window).height();
-		info_navi_width = $(".info-navi-wrap").width();
-		info_navi_height= $(".info-navi-wrap").height();
-		cand_list_width = $(".candidates-list").width();
-		$(".a-candidate-circle-wrap").width((cand_list_width-100)/5-0.1);
-		$(".each-info-navi").width((info_navi_width)/4-0.1);
-    });
-
 	let candidate_start;
 	let candidate_end;
 	let _10scenes_start;
 	let said_start;
 	let details_start;
 	let declare_start;
-	let each_info_margin = 150;
-
-	// 내비게이션 offset 스크롤시 재계산
-	let cal_start = function(){
-		_10scenes_start = $(".info-10scenes-wrap").offset().top;
-		said_start = $(".info-said-wrap").offset().top;
-		// rumors_start = $(".info-rumors-wrap").offset().top;
-		declare_strat = $(".info-declare-wrap").offset().top;
-		details_start = $(".info-details-wrap").offset().top;
+	let cand_list_width = $(".candidates-list").width();
+	// $(".a-candidate").width((cand_list_width-80)/4-0.1);
+	if ($(window).width()>800) {
+		$(".a-candidate-circle-wrap").width((cand_list_width-100)/5-0.1);
+	} else {
+		console.log((cand_list_width-100)/4-0.1);
+		$(".cand-cir").width((cand_list_width-40)/4-0.1);
 	}
+	let info_navi_width = $(".info-navi-wrap").width();
+	let info_navi_height= $(".info-navi-wrap").height();
+	$(".each-info-navi").width((info_navi_width)/4-0.1);
+
+	let candidate_length;
+	let progress_bar_per;
+	let progress_bar_width;
+	let declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
 
 	// 내비게이션 offset 할당
 	if ($(".a-candidate-info").offset() != undefined) {
 		candidate_start = $(".a-candidate-info").offset().top;
 		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
+		candidate_length = candidate_end - candidate_start;
 		_10scenes_start = $(".info-10scenes-wrap").offset().top;
 		said_start = $(".info-said-wrap").offset().top;
 		details_start = $(".info-details-wrap").offset().top;
@@ -58,6 +47,47 @@ $(function(){
 	} else {
 		console.log("not in here")
 	}
+	
+	// 화면 크기 바뀔 때마다 재계산
+	$(window).resize(function() {
+		var nowScroll_re = $(window).scrollTop();
+		screenWidth = $(window).width();
+		screenHeight = $(window).height();
+		info_navi_height= $(".info-navi-wrap").height();
+		cand_list_width = $(".candidates-list").width();
+		$(".info-navi-wrap").width(screenWidth);
+		if ($(window).width()>800) {
+			$(".a-candidate-circle-wrap").width((cand_list_width-100)/5-0.1);
+		} else {
+			console.log((cand_list_width-100)/4-0.1);
+			$(".cand-cir").width((cand_list_width-40)/4-0.1);
+		}
+		$(".each-info-navi").width((screenWidth)/4-0.1);
+
+		candidate_start = $(".a-candidate-info").offset().top;
+		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
+		candidate_length = candidate_end - candidate_start;
+		progress_bar_per = (nowScroll_re-candidate_start) / candidate_length;
+		progress_bar_width = screenWidth * progress_bar_per;
+		$(".navi-progress-bar").width(progress_bar_width);
+
+		_10scenes_start = $(".info-10scenes-wrap").offset().top;
+		said_start = $(".info-said-wrap").offset().top;
+		details_start = $(".info-details-wrap").offset().top;
+		declare_start = $(".info-declare-wrap").offset().top;
+
+		declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
+    });
+
+	// 내비게이션 offset 스크롤시 재계산
+	let cal_start = function(){
+		_10scenes_start = $(".info-10scenes-wrap").offset().top;
+		said_start = $(".info-said-wrap").offset().top;
+		// rumors_start = $(".info-rumors-wrap").offset().top;
+		declare_strat = $(".info-declare-wrap").offset().top;
+		details_start = $(".info-details-wrap").offset().top;
+	}
+	
 	$(".info-10scenes").click(function() {
 		$(window).scrollTop(_10scenes_start-100);
 	})
@@ -72,23 +102,18 @@ $(function(){
 		$(window).scrollTop(declare_start-100);
 	})
 
+	if($(window).width()>800) {
+		$(".main-summary img").animate({"left":"0", "opacity":"1"}, 1500, "easeInSine", function(){
+			$(".a-candidate-main-name-wrap").fadeIn("slow");
+		});
+	} else {
+		$(".main-summary img").animate({"opacity":"1"}, 1500, "easeInSine", function(){
+			$(".a-candidate-main-name-wrap").fadeIn("slow");
+		});
+		$(".message-arrow").css("left", $(window).width()/2 -25);
+		$(".each-message-box").css("padding", "0 " + ($(window).width() -300)/2 +"px");
+	}
 	
-	let detail01_width = $(".detail-desc01").width()+40+45.2;
-	let detail01_height = $(".detail-desc01").height()+20;
-	$(".detail01").width(detail01_width);
-	$(".detail01").height(detail01_height);
-	let detail02_width = $(".detail-desc02").width()+40+45.2;
-	let detail02_height = $(".detail-desc02").height()+20;
-	$(".detail02").width(detail02_width);
-	$(".detail02").height(detail02_height);
-	let detail03_width = $(".detail-desc03").width()+40+45.2;
-	let detail03_height = $(".detail-desc03").height()+20;
-	$(".detail03").width(detail03_width);
-	$(".detail03").height(detail03_height);
-
-	$(".main-summary img").animate({"left":"0", "opacity":"1"}, 1500, "easeInSine", function(){
-		$(".a-candidate-main-name-wrap").fadeIn("slow");
-	});
 	$(".main-intro-lines").animate({"top": "50px", "left": "50px", "opacity":"1"}, 1500, "easeInSine");
 	$(".sns-homepage img").hover(function(){
 		$(".sns-homepage p").stop().fadeIn();
@@ -110,7 +135,8 @@ $(function(){
 		if($('.declare-original').is(":visible")){
 			$(".declare-original").slideUp('slow');
 			$(".declare-more-btn p").html("전문보기");
-
+			// console.log($(".declare-summary").offset().top + $(".declare-summary").outerHeight());
+			$('html').animate({scrollTop : declareSummaryY - 50}, 500);
 		} else {
 			$(".declare-original").slideDown('slow');
 			$(".declare-more-btn p").html("닫기");
@@ -118,17 +144,24 @@ $(function(){
 
 	})
 
+	let messageWidth;
+	let nowLeft;
 	// 말말말 좌우 버튼
 	$(".message-going-to-right").click(function(){
 		$(".message-going-to-right").css("pointer-events", "none");
 		$(".message-going-to-left").css("pointer-events", "none");
+		if ($(window).width()>800) {
+			messageWidth = 800;
+		} else {
+			messageWidth = $(window).width();
+		}
    
-		let nowLeft = $(".message-box-wrap").css("left").split("px");
-		if(parseInt(nowLeft[0]) < -802) {
+		nowLeft = $(".message-box-wrap").css("left").split("px");
+		if(parseInt(nowLeft[0]) < -(messageWidth+2)) {
 			$(".message-going-to-right").css("pointer-events", "auto");
 			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
-			let strLeft = parseInt(nowLeft[0]) - 800;
+			let strLeft = parseInt(nowLeft[0]) - messageWidth;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
 				$(".message-going-to-right").css("pointer-events", "auto");
 				$(".message-going-to-left").css("pointer-events", "auto");
@@ -138,12 +171,18 @@ $(function(){
 	$(".message-going-to-left").click(function(){
 		$(".message-going-to-right").css("pointer-events", "none");
 		$(".message-going-to-left").css("pointer-events", "none");
-		let nowLeft = $(".message-box-wrap").css("left").split("px");
+
+		if ($(window).width()>800) {
+			messageWidth = 800;
+		} else {
+			messageWidth = $(window).width();
+		}
+		nowLeft = $(".message-box-wrap").css("left").split("px");
 		if(parseInt(nowLeft[0]) > -2) {
 			$(".message-going-to-right").css("pointer-events", "auto");
 			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
-			let strLeft = parseInt(nowLeft[0]) + 800;
+			let strLeft = parseInt(nowLeft[0]) + messageWidth;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
 				$(".message-going-to-right").css("pointer-events", "auto");
 				$(".message-going-to-left").css("pointer-events", "auto");
@@ -165,31 +204,6 @@ $(function(){
 		$(".non-active .each-scene-year").animate({"opacity":"0.8"}, 300, "easeInSine");
 		$(".non-active .each-scene-year p").animate({"font-size":"11px"}, 300, "easeInSine");
 	 });
-
-	$(".arrow01").click(function() {
-		$(".rumor01").css("background", "#393939");
-		$(".rumor-wrap01").fadeOut();
-		$(".rumor-back-wrap01").fadeIn();
-	})
-
-	$(".back-arrow01").click(function() {
-		$(".rumor01").css("background", "#ededed");
-		$(".rumor-wrap01").fadeIn();
-		$(".rumor-back-wrap01").fadeOut();
-	})
-
-	$(".arrow02").click(function() {
-		$(".rumor02").css("background", "#393939");
-		$(".rumor-wrap02").fadeOut();
-		$(".rumor-back-wrap02").fadeIn();
-	})
-
-	$(".back-arrow02").click(function() {
-		$(".rumor02").css("background", "#ededed");
-		$(".rumor-wrap02").fadeIn();
-		$(".rumor-back-wrap02").fadeOut();
-	})
-
 	
 	$(".up-top-arrow").click(function() {
 		$(window).scrollTop(0);
@@ -205,6 +219,8 @@ $(function(){
 	let person_name = $('.main-person-name');
 
 	if (person_name.html() === '이재명') {
+		$(".a-candidate-main").removeClass('sim-main');
+		$(".a-candidate-main").addClass('lee-main');
 		whos_color = lee_color;
 		img_name = 'img/lee-background.png';
 	} else if (person_name.html() === '윤석열') {
@@ -214,6 +230,8 @@ $(function(){
 		whos_color = ahn_color;
 		img_name = 'img/ahn-background.png';
 	} else if (person_name.html() === '심상정') {
+		$(".a-candidate-main").removeClass('lee-main');
+		$(".a-candidate-main").addClass('sim-main');
 		whos_color = sim_color;
 		img_name = 'img/sim-background.png';
 	} else {
@@ -224,24 +242,7 @@ $(function(){
 	$(".scene-title").css("color", whos_color);
 	$(".right-message").css("border", "2px solid " + whos_color);
 	$(".main-background-img").attr("src", img_name);
-
-	// 책 모양 구현
-	// console.log(500 - $(".scene01 .each-scene-img-detail").outerHeight());
-	// console.log(500 - $(".scene02 .each-scene-img-detail").outerHeight());
-	// console.log(500 - $(".scene09 .each-scene-img-detail").outerHeight());
-	// if (person_name.html() === '이재명') {
-	// 	$(".scene02").css("top", "50px");
-	// 	$(".scene02 .each-scene-wrap").css("height", "450px");
-
-	// 	$(".scene06").css("top", "-50px");
-	// 	$(".scene06 .each-scene-wrap").css("height", "550px");
-	// 	$(".scene08").css("top", "-50px");
-	// 	$(".scene08 .each-scene-wrap").css("height", "550px");
-
-	// 	$(".scene09").css("top", "-100px");
-	// 	$(".scene09 .each-scene-wrap").css("height", "600px");
-	// }
-	
+	$(".main-intro-lines-line").css("border-bottom", "1px solid " + whos_color);
 
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
@@ -259,6 +260,7 @@ $(function(){
 
 	});
 
+	
 	var offsetCalculated = false;
 	$(window).scroll(function(){
 		var nowScroll = $(window).scrollTop();
@@ -273,11 +275,10 @@ $(function(){
 				$(".interactive-header").css("display", "inherit");
 				$(".navi-progress-bar-back").css("opacity", "100%");
 			}
-
+			
 			if (nowScroll >= candidate_start && nowScroll <= candidate_end) {
-				let candidate_length = candidate_end - candidate_start;
-				let progress_bar_per = (nowScroll-candidate_start) / candidate_length;
-				let progress_bar_width = info_navi_width * progress_bar_per;
+				progress_bar_per = (nowScroll-candidate_start) / candidate_length;
+				progress_bar_width = screenWidth * progress_bar_per;
 				$(".navi-progress-bar").width(progress_bar_width);
 			} else {
 				$(".navi-progress-bar").width(0);
