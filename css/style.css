@@ -239,6 +239,7 @@ width: 27px; height: 30px;}
 .lines-line02 {height:113px;}
 .main-intro-lines p{color: #111; opacity: 1; font-weight: 100; font-family: 'Nanum Myeongjo', serif; line-height: 1.5;}
 .intro-line {font-size: 28px;}
+.intro-line04 {margin-left: 100px;}
 .candidate-sns {bottom: 50px; left: 50px;}
 .candidate-sns img { width: 35px; cursor: pointer;}
 .sns-in {float: left;}
@@ -295,9 +296,9 @@ width: 27px; height: 30px;}
 .info-10scenes-wrap {position: relative;}
 /* .each-scene {height: auto; position: relative;margin: 0 30px;} */
 .each-scene-img {height: 100%;}
-.each-scene-img img {width: 400px; height: auto;}
+.each-scene-img img {width: auto; height: 100%; position: relative;}
 .each-scene-img-detail {position:absolute; bottom: 0; padding: 10px 15px 15px 10px; opacity: 0;}
-.img-detail-back {position:absolute; background-color: white; opacity: 80%; width: 100%; height: 100%; left: 0; top: 0; z-index: 3;}
+.img-detail-back {position:absolute; background-color: white; opacity: 90%; width: 100%; height: 100%; left: 0; top: 0; z-index: 3;}
 .each-scene-img-detail p {position: relative; z-index: 4; word-break: keep-all;}
 .each-scene-year p {font-size: 24px; color:#555; }
 .non-active .each-scene-year p {font-size: 10px; padding-top: 15px;}
@@ -346,8 +347,9 @@ width: 27px; height: 30px;}
 /* 시범 삼아 추가 */
 
 /* .info-said-wrap {width: 950px;} */
-.said-date {width:100%; margin: 30px 0; text-align: center;}
-.said-date p {color: #393939;}
+/* .said-date {width:100%; margin: 30px 0; text-align: center;}
+.said-date p {color: #393939;} */
+/* .up-said-date {margin: 0 0 30px 0} */
 .said-message-wrap {width: 800px; position:relative; margin: 0 auto;}
 .said-message {width: 500px; height: auto; border-radius: 20px; padding: 20px;}
 .said-message {word-break: keep-all;}
@@ -359,11 +361,13 @@ width: 27px; height: 30px;}
 .said-profile img {width: 100%; height: auto;}
 .left-message {background-color: #dcdcdc;}
 .each-message-wrap { margin: 0 auto; width: 650px;}
-.total-message-wrap {width:700px; margin: 0 auto 30px auto;}
+.total-message-wrap {width:700px; }
+.up-total-message-wrap {margin: 0 auto 30px auto;}
 .said-location {font-size: 12px; text-align: right; margin-top:10px;}
+.said-date {text-align: right; font-size: 12px;}
 
 .message-box-wrap { width: 3000px; position: relative; left:0;}
-.each-message-box {float: left; height: 500px; position: relative; padding: 0 50px; border-right: 1px dotted #111;}
+.each-message-box {float: left; height: auto; position: relative; padding: 20px 50px; border-right: 1px dotted #111;}
 .message-box-wrap::after {display: block; clear: both; content:""; }
 .message-arrow {position:absolute; z-index: 50; width:50px;height:50px; cursor: pointer;}
 .message-arrow img {width:80%; padding: 5px;}
@@ -373,8 +377,8 @@ width: 27px; height: 30px;}
 .message-going-to-right {bottom: -20px; left: 400px;}
 
 /* .info-details-wrap {width:950px;} */
-.total-details-wrap {width:720px; height:100%; margin: 0 auto; top: -10px; position:relative; border-radius: 10px;}
-.each-detail {position: relative; width: 300px; padding: 10px 30px;}
+.total-details-wrap {width:770px; height:100%; margin: 0 auto; top: -10px; position:relative; border-radius: 10px;}
+.each-detail {position: relative; width: 325px; padding: 10px 30px;}
 .each-detail > div {float:left;}
 .each-detail::after { display: block; clear: both; content:""; }
 .details-tr > div {float:left;}
@@ -382,6 +386,7 @@ width: 27px; height: 30px;}
 .detail-name {margin-right:20px;}
 .detail-color {color:#555;}
 .detail-little {font-size: 10px;}
+.detail-body {width: 275px;}
 
 .total-rumors-wrap {width: 75%; margin: 0 auto; }
 .each-rumor {position: relative; height: 350px; border-radius: 20px; box-shadow: 1px 1px 1px #393939; overflow: hidden; margin-bottom: 100px;}
@@ -405,7 +410,7 @@ width: 27px; height: 30px;}
 
 .rumors-box {background:#565661; width: auto; height:500px;}
 
-.up-top-arrow {position:fixed; bottom: 100px; right: 10%; width: 50px; text-align: center;}
+.up-top-arrow {position:fixed; bottom: 100px; right: 10%; width: 50px; text-align: center; z-index: 100;}
 .up-top-arrow p {font-size: 12px;}
 .up-top-arrow img {width:100%; margin-top:5px; cursor: pointer;}
 
@@ -414,6 +419,8 @@ width: 27px; height: 30px;}
 	50%{ top:10px;}
   100%{ top:0;}
 }
+
+.owl-carousel {display:block; width: 3000px; z-index: inherit; }
 
 /******common footer******/
 .common-footer {position: relative; background:#fff;}
@@ -542,12 +549,12 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .main-background {left:-20px; background: #3599ff;}
 .main-summary img {width:300px; top: 30px; left: 45px;}
 .intro-line {font-size: 20px;}
-.a-candidate-main-name-wrap {left: 20px; right: auto; bottom: 180px;}
-.candidate-sns {left: 30px; bottom:30px;}
+.a-candidate-main-name-wrap {left: 20px; right: auto; bottom: 150px;}
+.candidate-sns {left: 20px; bottom:20px;}
 .main-party-name { font-size:60px;}
 .main-person-name{ font-size:70px;}
 .main-intro-lines {display: none;}
-.a-candidate-main {height: 400px;}
+.a-candidate-main {height: 370px;}
 .candidate-sns img {width: 30px;}
 
 .each-info-navi > p {font-size: 18px;}
@@ -561,10 +568,14 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 
 .declare-video iframe {width: 100%; height:270px;}
 .declare-text-wrap {width: 100%;}
+.para {margin: 0;}
 .para p {font-size: 15px;}
+.para .declare-summary-title {font-size: 18px; margin: 40px 0;}
 .para-td {margin: 0 10px;}
+.para-tr > div {float:none; width: 90%; margin: 0 auto;}
+.declare-more-btn {margin-top: 40px;}
 
-.each-message-box{width: 300px; height: 650px;}
+.each-message-box{width: 300px; height: auto;}
 .total-message-wrap {width:100%;}
 .said-message {width:205px;}
 .said-message p {font-size: 15px;}
@@ -572,11 +583,18 @@ body.scrollOff{position:fixed;overflow:hidden;height:100%;}
 .said-message .said-location {font-size: 12px;}
 .said-profile {width: 40px; height: 40px; margin-right: 10px;}
 
-
 .active {width: 300px;}
 .non-active {width: 30px;}
 .each-scene-year {margin: 0 0 0 3px;}
 .total-details-wrap {width: 100%;}
+.message-arrow {display: none;}
+
+.each-scene-img img { left: -50px;}
+.each-scene-img-detail p {font-size: 15px}
+.each-scene-img-detail .scene-title {font-size: 27px;}
+.active .each-scene-wrap { height: 520px;}
+
+.detail-body {width: 80%;}
 
 .digital-list { padding-top: 30px; }
 /*********digital common byline*******/

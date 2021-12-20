@@ -17,7 +17,18 @@ $(function(){
 	let details_start;
 	let declare_start;
 	let cand_list_width = $(".candidates-list").width();
-	// $(".a-candidate").width((cand_list_width-80)/4-0.1);
+	let isOpened = false;
+	
+	let declareHeight = $(".declare-original").outerHeight();
+	// 내비게이션 offset 스크롤시 재계산
+	let cal_start = function(){
+		_10scenes_start = $(".info-10scenes-wrap").offset().top;
+		said_start = $(".info-said-wrap").offset().top;
+		declare_strat = $(".info-declare-wrap").offset().top;
+		details_start = $(".info-details-wrap").offset().top;
+	}
+
+	$(".a-candidate").width((cand_list_width-80)/4-0.1);
 	if ($(window).width()>800) {
 		$(".a-candidate-circle-wrap").width((cand_list_width-100)/5-0.1);
 	} else {
@@ -31,17 +42,15 @@ $(function(){
 	let candidate_length;
 	let progress_bar_per;
 	let progress_bar_width;
-	let declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
+	let declareSummaryY;
 
 	// 내비게이션 offset 할당
 	if ($(".a-candidate-info").offset() != undefined) {
+		declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
 		candidate_start = $(".a-candidate-info").offset().top;
 		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
 		candidate_length = candidate_end - candidate_start;
-		_10scenes_start = $(".info-10scenes-wrap").offset().top;
-		said_start = $(".info-said-wrap").offset().top;
-		details_start = $(".info-details-wrap").offset().top;
-		declare_start = $(".info-declare-wrap").offset().top;
+		cal_start();
 		// console.log(declare_start)
 		// rumors_start = $(".info-rumors-wrap").offset().top;
 	} else {
@@ -50,6 +59,7 @@ $(function(){
 	
 	// 화면 크기 바뀔 때마다 재계산
 	$(window).resize(function() {
+		cal_start();
 		var nowScroll_re = $(window).scrollTop();
 		screenWidth = $(window).width();
 		screenHeight = $(window).height();
@@ -69,37 +79,27 @@ $(function(){
 		candidate_length = candidate_end - candidate_start;
 		progress_bar_per = (nowScroll_re-candidate_start) / candidate_length;
 		progress_bar_width = screenWidth * progress_bar_per;
+
 		$(".navi-progress-bar").width(progress_bar_width);
 
-		_10scenes_start = $(".info-10scenes-wrap").offset().top;
-		said_start = $(".info-said-wrap").offset().top;
-		details_start = $(".info-details-wrap").offset().top;
-		declare_start = $(".info-declare-wrap").offset().top;
+		cal_start();
 
 		declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
     });
 
-	// 내비게이션 offset 스크롤시 재계산
-	let cal_start = function(){
-		_10scenes_start = $(".info-10scenes-wrap").offset().top;
-		said_start = $(".info-said-wrap").offset().top;
-		// rumors_start = $(".info-rumors-wrap").offset().top;
-		declare_strat = $(".info-declare-wrap").offset().top;
-		details_start = $(".info-details-wrap").offset().top;
-	}
+	
 	
 	$(".info-10scenes").click(function() {
-		$(window).scrollTop(_10scenes_start-100);
+		$(window).scrollTop($(".info-10scenes-wrap").offset().top-100);
 	})
 	$(".info-said").click(function() {
-		$(window).scrollTop(said_start-100);
+		$(window).scrollTop($(".info-said-wrap").offset().top-100);
 	})
 	$(".info-details").click(function() {
-		$(window).scrollTop(details_start-100);
+		$(window).scrollTop($(".info-details-wrap").offset().top-100);
 	})
 	$(".info-declare").click(function() {
-		console.log("hi");
-		$(window).scrollTop(declare_start-100);
+		$(window).scrollTop($(".info-declare-wrap").offset().top-100);
 	})
 
 	if($(window).width()>800) {
@@ -115,29 +115,36 @@ $(function(){
 	}
 	
 	$(".main-intro-lines").animate({"top": "50px", "left": "50px", "opacity":"1"}, 1500, "easeInSine");
-	$(".sns-homepage img").hover(function(){
-		$(".sns-homepage p").stop().fadeIn();
-	}, function(){
-		$(".sns-homepage p").stop().fadeOut();
-	})
-	$(".sns-youtube img").hover(function(){
-		$(".sns-youtube p").stop().fadeIn();
-	}, function(){
-		$(".sns-youtube p").stop().fadeOut();
-	})
-	$(".sns-facebook img").hover(function(){
-		$(".sns-facebook p").stop().fadeIn();
-	}, function(){
-		$(".sns-facebook p").stop().fadeOut();
-	})
 
+	if(isMobile) {
+
+	} else {
+		$(".sns-homepage img").hover(function(){
+			$(".sns-homepage p").stop().fadeIn();
+		}, function(){
+			$(".sns-homepage p").stop().fadeOut();
+		})
+		$(".sns-youtube img").hover(function(){
+			$(".sns-youtube p").stop().fadeIn();
+		}, function(){
+			$(".sns-youtube p").stop().fadeOut();
+		})
+		$(".sns-facebook img").hover(function(){
+			$(".sns-facebook p").stop().fadeIn();
+		}, function(){
+			$(".sns-facebook p").stop().fadeOut();
+		})
+	
+	}
+	
 	$(".declare-more-btn").click(function() {
 		if($('.declare-original').is(":visible")){
+			isOpened = false;
 			$(".declare-original").slideUp('slow');
 			$(".declare-more-btn p").html("전문보기");
-			// console.log($(".declare-summary").offset().top + $(".declare-summary").outerHeight());
 			$('html').animate({scrollTop : declareSummaryY - 50}, 500);
 		} else {
+			isOpened = true;
 			$(".declare-original").slideDown('slow');
 			$(".declare-more-btn p").html("닫기");
 		}
@@ -192,19 +199,25 @@ $(function(){
 
 	// 카드 애니메이션
 	$(".option").click(function(){
-		$(".option").removeClass("active");
-		$(".option").addClass("non-active");
-		$(this).removeClass("non-active");
-		$(this).addClass("active");
+		if(isMobile){
 
-		$(".active .each-scene-img-detail").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
-		$(".active .each-scene-year").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
-		$(".active .each-scene-year p").delay(100).animate({"font-size":"24px"}, 500, "swing");
-		$(".non-active .each-scene-img-detail").animate({"opacity":"0"}, 0, "easeInSine");
-		$(".non-active .each-scene-year").animate({"opacity":"0.8"}, 300, "easeInSine");
-		$(".non-active .each-scene-year p").animate({"font-size":"11px"}, 300, "easeInSine");
+
+		}else{
+			$(".option").removeClass("active");
+			$(".option").addClass("non-active");
+			$(this).removeClass("non-active");
+			$(this).addClass("active");
+	
+			$(".active .each-scene-img-detail").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
+			$(".active .each-scene-year").delay(500).animate({"opacity":"1"}, 500, "easeInSine");
+			$(".active .each-scene-year p").delay(100).animate({"font-size":"24px"}, 500, "swing");
+			$(".non-active .each-scene-img-detail").animate({"opacity":"0"}, 0, "easeInSine");
+			$(".non-active .each-scene-year").animate({"opacity":"0.8"}, 300, "easeInSine");
+			$(".non-active .each-scene-year p").animate({"font-size":"11px"}, 300, "easeInSine");
+		}
 	 });
 	
+
 	$(".up-top-arrow").click(function() {
 		$(window).scrollTop(0);
 	})
@@ -246,7 +259,37 @@ $(function(){
 
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
+
 		
+		$(".option").removeClass("non-active");
+		$(".option").addClass("active");
+		$(".active").css("margin", "0 10px 0 0")
+
+		$(".scenes-screen-wrap").css("width", screenWidth + "px")
+		$(".scenes-screen-wrap").css("overflow-x", "scroll")
+		$(".scenes-wrap").css("width", "3100px")
+		$('.each-scene-img-detail').css("opacity", 1)
+		$(".up-said-date").css("margin", "0 0 30px 0")
+		$('.owl-carousel').owlCarousel({
+			loop:false,
+			margin:10,
+			nav:true,
+			responsive:{
+				0:{
+					items:1
+				},
+				600:{
+					items:3
+				},
+				1000:{
+					items:5
+				}
+		
+    		}
+		})
+
+		// $(".message-box-wrap").addClass("owl-carousel")
+
 	}
 	/******** 모바일 전용 조정 ********/
 	function init(){
@@ -277,6 +320,9 @@ $(function(){
 			}
 			
 			if (nowScroll >= candidate_start && nowScroll <= candidate_end) {
+				candidate_start = $(".a-candidate-info").offset().top;
+				candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
+				candidate_length = candidate_end - candidate_start;
 				progress_bar_per = (nowScroll-candidate_start) / candidate_length;
 				progress_bar_width = screenWidth * progress_bar_per;
 				$(".navi-progress-bar").width(progress_bar_width);
@@ -286,7 +332,6 @@ $(function(){
 		}
 
 		if(!offsetCalculated){ 
-			cal_start();
 			$(".info-10scenes-line").height($(".info-10scenes-wrap").height()-200);
 			offsetCalculated = true;
 		}
