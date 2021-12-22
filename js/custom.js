@@ -256,6 +256,16 @@ $(function(){
 	$(".right-message").css("border", "2px solid " + whos_color);
 	$(".main-background-img").attr("src", img_name);
 	$(".main-intro-lines-line").css("border-bottom", "1px solid " + whos_color);
+	$(".main-background-color").css("background-color", whos_color);
+
+	if(isMobile){
+		$(".main-background").css("background", whos_color);
+		$(".slide-img-mobile").css("display", "inherit")
+		// console.log($(".owl-stage").attr("left"))
+		// if($(".owl-stage").css("left")< -100){
+		// 	$(".slide-img-mobile").css("display", "none")
+		// }
+	}
 
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
@@ -263,33 +273,32 @@ $(function(){
 		
 		$(".option").removeClass("non-active");
 		$(".option").addClass("active");
-		$(".active").css("margin", "0 10px 0 0")
 
 		$(".scenes-screen-wrap").css("width", screenWidth + "px")
 		$(".scenes-screen-wrap").css("overflow-x", "scroll")
-		$(".scenes-wrap").css("width", "3100px")
 		$('.each-scene-img-detail').css("opacity", 1)
 		$(".up-said-date").css("margin", "0 0 30px 0")
-		$('.owl-carousel').owlCarousel({
-			loop:false,
-			margin:10,
-			nav:true,
-			responsive:{
-				0:{
-					items:1
-				},
-				600:{
-					items:3
-				},
-				1000:{
-					items:5
+		if($(".owl-carousel").offset() != undefined) {
+			$('.owl-carousel').owlCarousel({
+				loop:false,
+				margin:10,
+				nav:true,
+				responsive:{
+					0:{
+						items:1
+					},
+					600:{
+						items:3
+					},
+					1000:{
+						items:5
+					}
+			
 				}
-		
-    		}
-		})
-
+			})
+		}
 		// $(".message-box-wrap").addClass("owl-carousel")
-
+		$(".a-candidate").width((cand_list_width-20)/2-0.1);
 	}
 	/******** 모바일 전용 조정 ********/
 	function init(){
