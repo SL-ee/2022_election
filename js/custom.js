@@ -235,18 +235,18 @@ $(function(){
 		$(".a-candidate-main").removeClass('sim-main');
 		$(".a-candidate-main").addClass('lee-main');
 		whos_color = lee_color;
-		img_name = 'img/lee-background.png';
+		img_name = 'https://img.khan.co.kr/spko/storytelling/2022/candidates/lee-background.png';
 	} else if (person_name.html() === '윤석열') {
 		whos_color = yun_color;
-		img_name = 'img/yun-background.png';
+		img_name = 'https://img.khan.co.kr/spko/storytelling/2022/candidates/yun-background.png';
 	} else if (person_name.html() === '안철수') {
 		whos_color = ahn_color;
-		img_name = 'img/ahn-background.png';
+		img_name = 'https://img.khan.co.kr/spko/storytelling/2022/candidates/ahn-background.png';
 	} else if (person_name.html() === '심상정') {
 		$(".a-candidate-main").removeClass('lee-main');
 		$(".a-candidate-main").addClass('sim-main');
 		whos_color = sim_color;
-		img_name = 'img/sim-background.png';
+		img_name = 'https://img.khan.co.kr/spko/storytelling/2022/candidates/sim-background.png';
 	} else {
 		console.log("can't find this person.");
 	}
