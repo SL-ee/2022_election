@@ -90,16 +90,16 @@ $(function(){
 	
 	
 	$(".info-10scenes").click(function() {
-		$(window).scrollTop($(".info-10scenes-wrap").offset().top-100);
+		$(window).scrollTop($(".info-10scenes-wrap").offset().top-50);
 	})
 	$(".info-said").click(function() {
-		$(window).scrollTop($(".info-said-wrap").offset().top-100);
+		$(window).scrollTop($(".info-said-wrap").offset().top-50);
 	})
 	$(".info-details").click(function() {
-		$(window).scrollTop($(".info-details-wrap").offset().top-100);
+		$(window).scrollTop($(".info-details-wrap").offset().top-50);
 	})
 	$(".info-declare").click(function() {
-		$(window).scrollTop($(".info-declare-wrap").offset().top-100);
+		$(window).scrollTop($(".info-declare-wrap").offset().top-50);
 	})
 
 	if($(window).width()>800) {
