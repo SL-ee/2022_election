@@ -103,7 +103,7 @@ $(function(){
 	})
 
 	if($(window).width()>800) {
-		$(".main-summary img").animate({"left":"0", "opacity":"1"}, 1500, "easeInSine", function(){
+		$(".main-summary img").animate({"left":"0", "opacity":"1"}, 1000, "easeInSine", function(){
 			$(".a-candidate-main-name-wrap").fadeIn("slow");
 		});
 	} else {
@@ -114,7 +114,7 @@ $(function(){
 		$(".each-message-box").css("padding", "0 " + ($(window).width() -300)/2 +"px");
 	}
 	
-	$(".main-intro-lines").animate({"top": "50px", "left": "50px", "opacity":"1"}, 1500, "easeInSine");
+	$(".main-intro-lines").animate({"top": "50px", "left": "50px", "opacity":"1"}, 1000, "easeInSine");
 
 	if(isMobile) {
 
@@ -297,6 +297,13 @@ $(function(){
 				}
 			})
 		}
+		$(".owl-carousel").on('changed.owl.carousel', function(event) {
+			event.preventDefault();
+			event.stopImmediatePropagation();
+			
+			var cardCount = event.item.index;
+			$(".slide-img-mobile").fadeOut();
+		})
 		// $(".message-box-wrap").addClass("owl-carousel")
 		$(".a-candidate").width((cand_list_width-20)/2-0.1);
 	}
