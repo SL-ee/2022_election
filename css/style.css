@@ -292,7 +292,7 @@ width: 27px; height: 30px;}
 .info-title h2 {font-weight: 30; font-size: 36px;}
 .info-title-wrap {display: inline-block; width: auto;}
 
-.a-candidate-info { padding-bottom: 100px;}
+.a-candidate-info { padding-bottom: 50px;}
 .each-info {max-width:1500px; width: 950px; margin: 0 auto 0 auto; height: auto; position: relative;}
 .info-10scenes-wrap {position: relative;}
 .each-scene-img {height: 100%;}
@@ -429,6 +429,9 @@ width: 27px; height: 30px;}
 }
 
 .owl-carousel {display:block; width: 3000px; z-index: inherit; }
+.by-line {text-align: center; margin-bottom: 50px;}
+.by-line p {color: #555; font-size: 14px; line-height: 1.5;}
+.by-line-title {font-weight: 600;}
 
 /******common footer******/
 .common-footer {position: relative; background:#fff;}

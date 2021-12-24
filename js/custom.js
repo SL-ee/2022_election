@@ -10,18 +10,18 @@ $(function(){
 		return Math.floor((Math.random() * (n2 - n1 + 1)) + n1);
 	};
 
-	let candidate_start;
-	let candidate_end;
-	let _10scenes_start;
-	let said_start;
-	let details_start;
-	let declare_start;
-	let cand_list_width = $(".candidates-list").width();
-	let isOpened = false;
+	var candidate_start;
+	var candidate_end;
+	var _10scenes_start;
+	var said_start;
+	var details_start;
+	var declare_start;
+	var cand_list_width = $(".candidates-list").width();
+	var isOpened = false;
 	
-	let declareHeight = $(".declare-original").outerHeight();
+	var declareHeight = $(".declare-original").outerHeight();
 	// 내비게이션 offset 스크롤시 재계산
-	let cal_start = function(){
+	var cal_start = function(){
 		_10scenes_start = $(".info-10scenes-wrap").offset().top;
 		said_start = $(".info-said-wrap").offset().top;
 		declare_strat = $(".info-declare-wrap").offset().top;
@@ -35,14 +35,14 @@ $(function(){
 		console.log((cand_list_width-100)/4-0.1);
 		$(".cand-cir").width((cand_list_width-40)/4-0.1);
 	}
-	let info_navi_width = $(".info-navi-wrap").width();
-	let info_navi_height= $(".info-navi-wrap").height();
+	var info_navi_width = $(".info-navi-wrap").width();
+	var info_navi_height= $(".info-navi-wrap").height();
 	$(".each-info-navi").width((info_navi_width)/4-0.1);
 
-	let candidate_length;
-	let progress_bar_per;
-	let progress_bar_width;
-	let declareSummaryY;
+	var candidate_length;
+	var progress_bar_per;
+	var progress_bar_width;
+	var declareSummaryY;
 
 	// 내비게이션 offset 할당
 	if ($(".a-candidate-info").offset() != undefined) {
@@ -151,8 +151,8 @@ $(function(){
 
 	})
 
-	let messageWidth;
-	let nowLeft;
+	var messageWidth;
+	var nowLeft;
 	// 말말말 좌우 버튼
 	$(".message-going-to-right").click(function(){
 		$(".message-going-to-right").css("pointer-events", "none");
@@ -168,7 +168,7 @@ $(function(){
 			$(".message-going-to-right").css("pointer-events", "auto");
 			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
-			let strLeft = parseInt(nowLeft[0]) - messageWidth;
+			var strLeft = parseInt(nowLeft[0]) - messageWidth;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
 				$(".message-going-to-right").css("pointer-events", "auto");
 				$(".message-going-to-left").css("pointer-events", "auto");
@@ -189,7 +189,7 @@ $(function(){
 			$(".message-going-to-right").css("pointer-events", "auto");
 			$(".message-going-to-left").css("pointer-events", "auto");
 		} else {
-			let strLeft = parseInt(nowLeft[0]) + messageWidth;
+			var strLeft = parseInt(nowLeft[0]) + messageWidth;
 			$(".message-box-wrap").stop().animate({"left": strLeft+"px"}, 700, "easeInSine", function() {
 				$(".message-going-to-right").css("pointer-events", "auto");
 				$(".message-going-to-left").css("pointer-events", "auto");
@@ -223,13 +223,13 @@ $(function(){
 	})
 
 	// 색 지정
-	let lee_color = '#3599ff';
-	let yun_color = '#d92b37';
-	let ahn_color = '#e56b2e';
-	let sim_color = '#fccd32';
-	let whos_color = '#111';
-	let img_name = '';
-	let person_name = $('.main-person-name');
+	var lee_color = '#3599ff';
+	var yun_color = '#d92b37';
+	var ahn_color = '#e56b2e';
+	var sim_color = '#fccd32';
+	var whos_color = '#111';
+	var img_name = '';
+	var person_name = $('.main-person-name');
 
 	if (person_name.html() === '이재명') {
 		$(".a-candidate-main").removeClass('sim-main');
