@@ -89,7 +89,7 @@ font-family: sans-serif; font-weight: bold;}
 ::-webkit-selection {background: #ff9c34; color: #111; text-shadow: none; }
 
 /*****IE 블락******/
-.ie-block { display:none; z-index: 99999; width:100%; height:100vh; background:#111; background: rgba(21, 21, 21, 0.9);position:fixed; top:0;left:0;bottom:0;right:0;}
+.ie-block { z-index: 99999; width:100%; height:100vh; background:#111; background: rgba(21, 21, 21, 0.9);position:fixed; top:0;left:0;bottom:0;right:0;}
 .ie-block .alert-msg { position: absolute; background:#fff; box-sizing: border-box; padding: 25px; border-radius: 5px;
 box-shadow: 2px 2px 8px rgba(152, 153, 156, 0.2);width: 50%; left:25%; top: 50%; margin-top:-150px; }
 .ie-block .alert-msg p { margin-bottom:8px;  text-align: center; color: #454750;font-size: 20px; }

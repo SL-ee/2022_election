@@ -71,7 +71,12 @@
 	  gtag('config', 'G-NXKM133K18');
 	</script>
 
-
+	<script type="text/javascript">
+		var siteList = ["http://www.khan.co.kr/kh_storytelling/2022/candidates/lee.html", "http://www.khan.co.kr/kh_storytelling/2022/candidates/yoon.html", 
+	"http://www.khan.co.kr/kh_storytelling/2022/candidates/sim.html", "http://www.khan.co.kr/kh_storytelling/2022/candidates/ahn.html"];
+		var randomPick = Math.floor(Math.random() * siteList.length);
+		window.location.href = siteList[randomPick];
+	</script>
  </head>
 <body>
 <!-- 메타 태그-->
@@ -239,5 +244,19 @@
 
 	</div>
 	<script type="text/javascript" src="<?php echo $js; ?>"></script>
+	
+	<!-- imp 2021.10 YJ 추가-->
+	<!-- <SCRIPT type="text/javaSCRIPT">
+		var impTp = "";
+		if(navigator.userAgent.match(/iPhone|BlackBerry|Mobile|Android|Windows CE/i) && !navigator.userAgent.match(/SHW-M380S|SHW-M180S|SHW-M180L|SCH-I800|SGH-T849|SHW-M480W/i)){
+			impTp = "&impTp=mobile";
+			document.write('<img src="//ad.khan.co.kr/imp/mobile_imp.php?dp=103101" width="0" height="0" style="display: none;" alt="img" />');
+		} else {
+			document.write('<img src="//ad.khan.co.kr/imp/khan_imp.php?dp=015111" width="0" height="0" style="display: none;" alt="img" />');
+		}
+   
+		document.write('<img src="//ad.khan.co.kr/artCnt/khanArt_cnt.php?artid=202111191618011&code=940100&mode=khan'+ impTp +'" width="0" height="0" style="display: none;" />');
+	</SCRIPT> -->
+	<!--imp -->
 </body>
 </html>

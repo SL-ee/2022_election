@@ -267,6 +267,10 @@ $(function(){
 		// }
 	}
 
+	$(".close-ie-block").on("click", function(){
+		$(".ie-block").hide();
+	})
+
 	/******** 모바일 전용 조정 ********/
 	if(isMobile==true){
 
