@@ -48,8 +48,7 @@ $(function(){
 	if ($(".a-candidate-info").offset() != undefined) {
 		declareSummaryY = $(".declare-summary").offset().top + $(".declare-summary").outerHeight();
 		candidate_start = $(".a-candidate-info").offset().top;
-		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
-		candidate_length = candidate_end - candidate_start;
+		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 50;
 		cal_start();
 		// console.log(declare_start)
 		// rumors_start = $(".info-rumors-wrap").offset().top;
@@ -75,12 +74,15 @@ $(function(){
 		$(".each-info-navi").width((screenWidth)/4-0.1);
 
 		candidate_start = $(".a-candidate-info").offset().top;
-		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
-		candidate_length = candidate_end - candidate_start;
-		progress_bar_per = (nowScroll_re-candidate_start) / candidate_length;
+		candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 50;
+		progress_bar_per = (nowScroll-candidate_start) / ($(".a-candidate-info").height()-screenHeight*0.7);
 		progress_bar_width = screenWidth * progress_bar_per;
-
-		$(".navi-progress-bar").width(progress_bar_width);
+		if(nowScroll + $(window).height() >= $(document).height()) {
+			console.log("bottom!");
+			$(".navi-progress-bar").width(screenWidth);
+		} else {
+			$(".navi-progress-bar").width(progress_bar_width);
+		}
 
 		cal_start();
 
@@ -322,11 +324,12 @@ $(function(){
 		init();
 
 	});
-
 	
 	var offsetCalculated = false;
 	$(window).scroll(function(){
 		var nowScroll = $(window).scrollTop();
+		// console.log(nowScroll)
+		
 		if (candidate_start && info_navi_height) {
 			if (nowScroll >= (candidate_start -info_navi_height) && nowScroll <= (candidate_end - (info_navi_height*2))) {
 				$(".info-navi-wrap").css("position", "fixed");
@@ -341,15 +344,20 @@ $(function(){
 			
 			if (nowScroll >= candidate_start && nowScroll <= candidate_end) {
 				candidate_start = $(".a-candidate-info").offset().top;
-				candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 100;
-				candidate_length = candidate_end - candidate_start;
-				progress_bar_per = (nowScroll-candidate_start) / candidate_length;
+				candidate_end = $(".a-candidate-info").offset().top + $(".a-candidate-info").height() + 50;
+				progress_bar_per = (nowScroll-candidate_start) / ($(".a-candidate-info").height()-screenHeight*0.7);
 				progress_bar_width = screenWidth * progress_bar_per;
-				$(".navi-progress-bar").width(progress_bar_width);
+				if(nowScroll + $(window).height() >= $(document).height()) {
+					console.log("bottom!");
+					$(".navi-progress-bar").width(screenWidth);
+				} else {
+					$(".navi-progress-bar").width(progress_bar_width);
+				}
 			} else {
 				$(".navi-progress-bar").width(0);
 			}
 		}
+		
 
 		if(!offsetCalculated){ 
 			$(".info-10scenes-line").height($(".info-10scenes-wrap").height()-200);

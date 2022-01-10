@@ -231,7 +231,7 @@ width: 27px; height: 30px;}
 .a-candidate-main {height:450px; position: relative; overflow: hidden;}
 .a-candidate-main > div {position: absolute;}
 .main-background {left: 170px;}
-.main-background-color {width: 30%; height: 450px; position:absolute; right:0;}
+.main-background-color {width: 40%; height: 450px; position:absolute; right:0;}
 .main-summary {right: 20px;}
 .main-summary img { position: relative; width: 400px; top:40px; left:70px; opacity: 0.1; }
 .a-candidate-main .main-intro-lines {top: 50px; left: 10px; opacity: 0.1;}
@@ -241,6 +241,8 @@ width: 27px; height: 30px;}
 .main-intro-lines p{color: #111; opacity: 1; font-weight: 100; font-family: 'Nanum Myeongjo', serif; line-height: 1.5; position: relative; z-index: 10;}
 .intro-line {font-size: 28px;}
 .intro-line04 {margin-left: 100px;}
+.ahn-intro-line04 {margin-left: 60px;}
+.sim-intro-line04 {margin-left: 145px;}
 .candidate-sns {bottom: 50px; left: 50px;}
 .candidate-sns img { width: 35px; cursor: pointer;}
 .sns-in {float: left;}
